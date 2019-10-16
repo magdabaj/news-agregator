@@ -7,6 +7,7 @@ import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 
+
 export default function configureStore(initialState = {}, history) {
   let composeEnhancers = compose;
   const reduxSagaMonitorOptions = {};
@@ -21,10 +22,10 @@ export default function configureStore(initialState = {}, history) {
     // NOTE: Uncomment the code below to restore support for Redux Saga
     // Dev Tools once it supports redux-saga version 1.x.x
     // if (window.__SAGA_MONITOR_EXTENSION__)
-    //   reduxSagaMonitorOptions = {
-    //     sagaMonitor: window.__SAGA_MONITOR_EXTENSION__,
-    //   };
-    /* eslint-enable */
+    //    reduxSagaMonitorOptions = {
+    //      sagaMonitor: window.__SAGA_MONITOR_EXTENSION__,
+    //    };
+      /*eslint-enable*/
   }
 
   const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions);
