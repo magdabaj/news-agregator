@@ -1,27 +1,22 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import './index.css';
+import { NavLink } from 'react-router-dom';
 
-import A from './A';
-import Img from './Img';
-import NavBar from './NavBar';
-import HeaderLink from './HeaderLink';
-import Banner from './banner.jpg';
-import messages from './messages';
-
-function Header() {
+const Header = () => {
   return (
     <div>
-      <A href="https://www.reactboilerplate.com/">
-        <Img src={Banner} alt="react-boilerplate - Logo" />
-      </A>
-      <NavBar>
-        <HeaderLink to="/">
-          <FormattedMessage {...messages.home} />
-        </HeaderLink>
-        <HeaderLink to="/features">
-          <FormattedMessage {...messages.features} />
-        </HeaderLink>
-      </NavBar>
+      <div className="header">
+        <NavLink to="/home" className="header-item header-item-logo" exact>
+          Company Logo
+        </NavLink>
+        <div className="header-right">
+          <NavLink className="header-item" to="/" exact>
+            Home
+          </NavLink>
+          <NavLink to="/users" className="header-item">Users</NavLink>
+          <NavLink to="/login" className="header-item">About</NavLink>
+        </div>
+      </div>
     </div>
   );
 }
