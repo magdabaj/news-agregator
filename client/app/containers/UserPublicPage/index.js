@@ -45,10 +45,6 @@ export const UserPublicPage = ({ users, slug, user, articles, ...props }) => {
     }
   }, [users]);
 
-  console.log('users', users);
-  console.log('user', user, 'slug', slug);
-  console.log('props', props);
-
   return (
     <div>
       <Helmet>
@@ -76,6 +72,8 @@ UserPublicPage.propTypes = {
   loadUsers: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   articles: PropTypes.array.isRequired,
+  findUser: PropTypes.func.isRequired,
+  loadUserArticles: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
