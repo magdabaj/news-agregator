@@ -7,7 +7,7 @@ const Header = () => {
     <div>
       <div className="header">
         <NavLink to="/home" className="header-item header-item-logo" exact>
-          Company Logo
+          IT Brand News
         </NavLink>
         <div className="header-right">
           <NavLink className="header-item" to="/" exact>

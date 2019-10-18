@@ -8,7 +8,6 @@ import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -19,8 +18,9 @@ import makeSelectUsersPage from './selectors';
 import { makeSelectUsers, makeSelectLoading } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import { loadUsers } from './actions';
+import SearchUserPage from './SearchUserPage';
+import Container from './Container';
 
 export const UsersPage = ({users, loadingUsers, ...props}) => {
   useInjectReducer({ key: 'usersPage', reducer });
@@ -34,24 +34,17 @@ export const UsersPage = ({users, loadingUsers, ...props}) => {
   console.log('users', users);
 
   return (
-    <div>
+    <Container>
       <Helmet>
         <title>UsersPage</title>
         <meta name="description" content="Description of UsersPage" />
       </Helmet>
       {!loadingUsers ? (
         <>
-          <FormattedMessage {...messages.header} />
-          {users.map(user => (
-            <>
-              <div>{user.name} {user.surname}</div>
-              <div>{user.email}</div>
-            </>
-          ))}
+          <SearchUserPage users={users} />
         </>
-      ) : <Spinner/>
-      }
-    </div>
+      ) : <Spinner/>}
+    </Container>
   );
 };
 
@@ -69,7 +62,7 @@ function mapDispatchToProps(dispatch) {
   return {
     loadUsers: () => {
       dispatch(loadUsers());
-    }
+    },
   };
 }
 
