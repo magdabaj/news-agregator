@@ -41,6 +41,7 @@ export const UsersPage = ({users, loadingUsers, ...props}) => {
       </Helmet>
       {!loadingUsers ? (
         <>
+          <h3>Search for user to see his/her articles</h3>
           <SearchUserPage users={users} />
         </>
       ) : <Spinner/>}

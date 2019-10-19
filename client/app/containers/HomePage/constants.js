@@ -18,3 +18,7 @@ export const LOAD_USERS_ERROR = 'boilerplate/Home/LOAD_USERS_ERROR';
 export const LOAD_ARTICLES = 'boilerplate/Home/LOAD_ARTICLES';
 export const LOAD_ARTICLES_SUCCESS = 'boilerplate/Home/LOAD_ARTICLES_SUCCESS';
 export const LOAD_ARTICLES_ERROR = 'boilerplate/Home/LOAD_ARTICLES_ERROR';
+
+export const LOAD_TAGS = 'boilerplate/Home/LOAD_TAGS';
+export const LOAD_TAGS_SUCCESS = 'boilerplate/Home/LOAD_TAGS_SUCCESS';
+export const LOAD_TAGS_ERROR = 'boilerplate/Home/LOAD_TAGS_ERROR';

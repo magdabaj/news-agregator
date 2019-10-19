@@ -5,7 +5,6 @@
  */
 
 // import ArticlesComponent from "client/app/components/ArticlesComponent";
-import Spinner from "components/Spinner/Loadable";
 import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -23,12 +22,15 @@ import {
 import CenteredSection from './CenteredSection';
 import Section from './Section';
 import ArticlesComponent from '../../components/ArticlesComponent/Loadable';
+import Spinner from 'components/Spinner/Loadable';
+import SortByTag from 'components/SortByTag/Loadable';
 import { loadRepos } from '../App/actions';
-import { changeUsername, loadUsers, loadArticles } from './actions';
+import { changeUsername, loadUsers, loadArticles, loadTags } from './actions';
 import {
   makeSelectUsername,
   makeSelectArticles,
   makeSelectUsers,
+  makeSelectTags,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -44,6 +46,7 @@ export function HomePage({
   users,
   onChangeUsername,
   articles,
+  tags,
   ...props
 }) {
   useInjectReducer({ key, reducer });
@@ -52,22 +55,19 @@ export function HomePage({
   useEffect(() => {
     // When initial state username is not null, submit the form to load repos
     if (username && username.trim().length > 0) onSubmitForm();
-    if (users.length === 0) {
-      props.loadUsers();
-    }
+    if (users.length === 0) props.loadUsers();
+    if (articles.length === 0) props.loadArticles();
+    if (tags.length === 0) props.loadTags();
 
-    if(articles.length === 0) {
-      props.loadArticles();
-    }
   }, []);
 
-  console.log(users, props, articles);
+  console.log(users, tags, articles);
 
-  const reposListProps = {
-    loading,
-    error,
-    repos,
-  };
+  // const reposListProps = {
+  //   loading,
+  //   error,
+  //   repos,
+  // };
 
   return (
     <article>
@@ -80,9 +80,14 @@ export function HomePage({
       </Helmet>
       <div>
         <CenteredSection >
-          {articles.length > 0 && users.length > 0 ?
-            <ArticlesComponent articles={articles} users={users} /> :
-            <Spinner/>
+          {articles.length > 0 && users.length > 0 && tags.length > 0 ?
+            (
+              <div>
+                <SortByTag tags={tags} />
+                <ArticlesComponent articles={articles} />
+              </div>
+              ) :
+            <Spinner />
           }
         </CenteredSection>
         <Section>
@@ -103,6 +108,9 @@ HomePage.propTypes = {
   users: PropTypes.array.isRequired,
   loadUsers: PropTypes.func.isRequired,
   articles: PropTypes.array.isRequired,
+  tags: PropTypes.array.isRequired,
+  loadTags: PropTypes.func.isRequired,
+  loadArticles: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -112,6 +120,7 @@ const mapStateToProps = createStructuredSelector({
   error: makeSelectError(),
   users: makeSelectUsers(),
   articles: makeSelectArticles(),
+  tags: makeSelectTags(),
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -123,6 +132,7 @@ export function mapDispatchToProps(dispatch) {
     },
     loadUsers: () => dispatch(loadUsers()),
     loadArticles: () => dispatch(loadArticles()),
+    loadTags: () => dispatch(loadTags()),
   };
 }
 

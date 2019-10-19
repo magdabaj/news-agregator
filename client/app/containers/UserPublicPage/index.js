@@ -48,7 +48,7 @@ export const UserPublicPage = ({ users, slug, user, articles, ...props }) => {
         <title>UserPublicPage</title>
         <meta name="description" content="Description of UserPublicPage" />
       </Helmet>
-      <ArticlesComponent articles={articles} users={users} />
+      <ArticlesComponent articles={articles} />
     </div>
   );
 }

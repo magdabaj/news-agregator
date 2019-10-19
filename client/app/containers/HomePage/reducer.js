@@ -16,6 +16,9 @@ import {
   LOAD_USERS,
   LOAD_USERS_SUCCESS,
   LOAD_USERS_ERROR,
+  LOAD_TAGS,
+  LOAD_TAGS_SUCCESS,
+  LOAD_TAGS_ERROR,
 } from './constants';
 
 // The initial state of the App
@@ -23,10 +26,9 @@ export const initialState = {
   username: '',
   articles: [],
   users: [],
-  loadingUsers: false,
-  errorUsers: false,
-  loadingArticles: false,
-  errorArticles: false,
+  tags: [],
+  loading: false,
+  error: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -38,30 +40,43 @@ const homeReducer = (state = initialState, action) =>
         draft.username = action.username.replace(/@/gi, '');
         break;
       case LOAD_ARTICLES:
-        draft.loadingArticles = true;
-        draft.errorArticles = false;
+        draft.loading = true;
+        draft.error = false;
         break;
       case LOAD_ARTICLES_SUCCESS:
-        draft.loadingArticles = false;
-        draft.errorArticles = false;
+        draft.loading = false;
+        draft.error = false;
         draft.articles = action.articles;
         break;
       case LOAD_ARTICLES_ERROR:
-        draft.loadingArticles = false;
-        draft.errorArticles = true;
+        draft.loading = false;
+        draft.error = action.error;
         break;
       case LOAD_USERS:
-        draft.loadingUsers = true;
-        draft.errorUsers = false;
+        draft.loading = true;
+        draft.error = false;
         break;
       case LOAD_USERS_SUCCESS:
-        draft.loadingUsers = false;
-        draft.errorUsers = false;
+        draft.loading = false;
+        draft.error = false;
         draft.users = action.users;
         break;
       case LOAD_USERS_ERROR:
-        draft.loadingArticles = false;
-        draft.errorUsers = true;
+        draft.loading = false;
+        draft.error = action.error;
+        break;
+      case LOAD_TAGS:
+        draft.loading = true;
+        draft.error = false;
+        break;
+      case LOAD_TAGS_SUCCESS:
+        draft.loading = false;
+        draft.error = false;
+        draft.tags = action.tags;
+        break;
+      case LOAD_TAGS_ERROR:
+        draft.loading = false;
+        draft.error = action.error;
         break;
       default:
         return state;

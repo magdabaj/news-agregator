@@ -36,7 +36,7 @@ router.get('/:articleId', (req, res) => {
 
 router.get('/user/:userId', (req, res) => {
     let user_id = parseInt(req.params.userId);
-    client.query(`SELECT * FROM articles WHERE user_id=${user_id}`, (err, res2) => {
+    client.query(`SELECT * FROM articles WHERE user_id=${user_id} `, (err, res2) => {
         if (err) {
             console.log(err.stack)
         } else {

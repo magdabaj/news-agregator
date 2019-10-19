@@ -7,7 +7,6 @@ import {
   put,
   select,
   takeLatest,
-  takeEvery,
   all,
 } from 'redux-saga/effects';
 import { LOAD_REPOS } from 'containers/App/constants';
@@ -18,11 +17,14 @@ import {
   loadUsersSuccess,
   loadUsersError,
   loadArticlesError,
-  loadArticlesSuccess
+  loadArticlesSuccess,
+  loadTagsError,
+  loadTagsSuccess,
 } from './actions';
-import { LOAD_USERS, LOAD_ARTICLES } from './constants';
+import { LOAD_USERS, LOAD_ARTICLES, LOAD_TAGS } from './constants';
 import { fetchUser } from '../../utils/api/usersApi';
 import { fetchArticles } from '../../utils/api/articlesApi';
+import { fetchTags } from '../../utils/api/tagsApi';
 
 /**
  * Github repos request/response handler
@@ -86,6 +88,24 @@ export function* watchArticlesLoad() {
   yield takeLatest(LOAD_ARTICLES, handleArticlesLoad);
 }
 
+export function* handleTagsLoad() {
+  try {
+    const tags = yield call(fetchTags);
+    yield put(loadTagsSuccess(tags));
+  } catch (error) {
+    yield put(loadArticlesError(error.message));
+  }
+}
+
+export function* watchTagsLoad() {
+  yield takeLatest(LOAD_TAGS, handleTagsLoad);
+}
+
 export default function* rootSaga() {
-  yield all([watchUsersLoad(), githubData(), watchArticlesLoad()]);
+  yield all([
+    watchUsersLoad(),
+    githubData(),
+    watchArticlesLoad(),
+    watchTagsLoad(),
+  ]);
 }
