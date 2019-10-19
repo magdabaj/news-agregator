@@ -12,22 +12,27 @@ import TagButton from './TagButton';
 
 const SortByTag = ({ tags }) => {
   const [activeTags, setActiveTags] = useState([]);
+  const [activeStyle, setActiveStyle] = useState('dodgerBlue');
 
   const addActiveTag = tag => {
     const { name } = tag;
-    // const array = activeTags;
-    // array.push(name);
-    // setActiveTags(array);
+    const array = [...activeTags];
+    array.push(name);
+    console.log(array);
+    setActiveTags(array);
   };
   console.log(activeTags);
   return (
-    <Container>
-      {tags.map(tag => (
-        <TagButton key={tag.tag_id} onClick={() => addActiveTag(tag)}>
-          {tag.name}
-        </TagButton>
-      ))}
-    </Container>
+    <>
+      <h2>Sort articles by tags</h2>
+      <Container>
+        {tags.map(tag => (
+          <TagButton style={{backgroundColor: activeStyle}} key={tag.tag_id} onClick={() => addActiveTag(tag)}>
+            {tag.name}
+          </TagButton>
+        ))}
+      </Container>
+  < />
   )
 };
 
