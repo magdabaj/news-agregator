@@ -15,6 +15,7 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
+import ArticlesComponent from 'components/ArticlesComponent';
 import makeSelectUserPublicPage from './selectors';
 import {
   makeSelectLoading,
@@ -39,10 +40,6 @@ export const UserPublicPage = ({ users, slug, user, articles, ...props }) => {
     if(users.length > 0 && slug) {
       props.findUser(users, slug);
     }
-
-    if(user.email !== ''){
-      props.loadUserArticles(user.user_id);
-    }
   }, [users]);
 
   return (
@@ -51,16 +48,7 @@ export const UserPublicPage = ({ users, slug, user, articles, ...props }) => {
         <title>UserPublicPage</title>
         <meta name="description" content="Description of UserPublicPage" />
       </Helmet>
-      {articles.length > 0 ? (
-        <div>
-          {articles.map(article => (
-          <>
-            <h4>{article.title}</h4>
-            <div><a href={article.url} target='_blank'>{article.url}</a></div>
-          </>
-        ))}</div>
-      ) :
-        <Spinner/>}
+      <ArticlesComponent articles={articles} users={users} />
     </div>
   );
 }

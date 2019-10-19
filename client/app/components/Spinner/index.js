@@ -14,9 +14,9 @@ import messages from './messages';
 
 function Spinner() {
   return (
-    <div>
+    <div className="container">
       <FormattedMessage {...messages.header} />
-      <div className="loader"/>
+      <div className="loader" />
     </div>
   );
 }

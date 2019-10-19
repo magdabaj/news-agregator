@@ -12,7 +12,7 @@ const client = new Client({
 client.connect();
 
 router.get('/', (req, res, next) => {
-    client.query('SELECT * FROM articles', (err, res2) => {
+    client.query('SELECT * FROM articles LEFT JOIN users ON articles.user_id=users.user_id', (err, res2) => {
         if (err) {
             console.log(err.stack)
         } else {

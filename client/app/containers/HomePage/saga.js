@@ -2,12 +2,27 @@
  * Gets the repositories of the user from Github
  */
 
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import {
+  call,
+  put,
+  select,
+  takeLatest,
+  takeEvery,
+  all,
+} from 'redux-saga/effects';
 import { LOAD_REPOS } from 'containers/App/constants';
 import { reposLoaded, repoLoadingError } from 'containers/App/actions';
-
 import request from 'utils/request';
 import { makeSelectUsername } from 'containers/HomePage/selectors';
+import {
+  loadUsersSuccess,
+  loadUsersError,
+  loadArticlesError,
+  loadArticlesSuccess
+} from './actions';
+import { LOAD_USERS, LOAD_ARTICLES } from './constants';
+import { fetchUser } from '../../utils/api/usersApi';
+import { fetchArticles } from '../../utils/api/articlesApi';
 
 /**
  * Github repos request/response handler
@@ -29,10 +44,48 @@ export function* getRepos() {
 /**
  * Root saga manages watcher lifecycle
  */
-export default function* githubData() {
+export function* githubData() {
   // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
   yield takeLatest(LOAD_REPOS, getRepos);
+}
+
+/**
+ * Downloading users from data base
+ */
+
+export function* handleUsersLoad() {
+  try {
+    const users = yield call(fetchUser);
+    yield put(loadUsersSuccess(users));
+  } catch (error) {
+    yield put(loadUsersError(error.toString()));
+  }
+}
+
+export function* watchUsersLoad() {
+  yield takeLatest(LOAD_USERS, handleUsersLoad);
+}
+
+/**
+ * Downloading articles from data base
+ */
+
+export function* handleArticlesLoad() {
+  try {
+    const articles = yield call(fetchArticles);
+    yield put(loadArticlesSuccess(articles));
+  } catch (error) {
+    yield put(loadArticlesError(error.message));
+  }
+}
+
+export function* watchArticlesLoad() {
+  yield takeLatest(LOAD_ARTICLES, handleArticlesLoad);
+}
+
+export default function* rootSaga() {
+  yield all([watchUsersLoad(), githubData(), watchArticlesLoad()]);
 }

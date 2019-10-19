@@ -38,9 +38,9 @@ router.post('/', (req, res) => {
   let name = req.body.name;
   let surname = req.body.surname;
   let email = req.body.email;
-  let join_date = new Date();
-  let sql = 'INSERT INTO users (name, surname, email, join_date) VALUES ($1, $2, $3, $4) RETURNING *';
-  let params = [ name, surname, email, join_date];
+  let userJoined = new Date();
+  let sql = 'INSERT INTO users (name, surname, email, userJoined) VALUES ($1, $2, $3, $4) RETURNING *';
+  let params = [ name, surname, email, userJoined];
   client.query(sql, params, (err, res2) => {
     if (err) {
       console.log(err.stack)
@@ -55,9 +55,9 @@ router.put('/', (req, res) => {
   let surname = req.body.surname;
   let email = req.body.email;
   let user_id = req.body.user_id;
-  let edit_date = new Date();
-  let sql = 'UPDATE users SET name = $1,surname = $2, email = $3, edit_date = $4 WHERE user_id = $5 RETURNING *';
-  let params = [name, surname, email, edit_date, user_id];
+  let editUser = new Date();
+  let sql = 'UPDATE users SET name = $1,surname = $2, email = $3, editUser = $4 WHERE user_id = $5 RETURNING *';
+  let params = [name, surname, email, editUser, user_id];
   client.query(sql, params, (err, res2) => {
     if (err) {
       console.log(err.stack)

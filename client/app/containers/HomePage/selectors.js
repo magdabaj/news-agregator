@@ -13,5 +13,16 @@ const makeSelectUsername = () =>
     homeState => homeState.username,
   );
 
+const makeSelectUsers = () =>
+  createSelector(
+    selectHome,
+    homeState => homeState.users,
+  );
 
-export { selectHome, makeSelectUsername };
+const makeSelectArticles = () =>
+  createSelector(
+    selectHome,
+    state => state.articles,
+  );
+
+export { selectHome, makeSelectUsername, makeSelectUsers, makeSelectArticles };

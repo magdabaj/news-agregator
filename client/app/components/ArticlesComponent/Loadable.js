@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for Articles
+ * Asynchronously loads the component for ArticlesComponent
  *
  */
 
