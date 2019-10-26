@@ -15,6 +15,12 @@ import {
   LOAD_TAGS,
   LOAD_TAGS_ERROR,
   LOAD_TAGS_SUCCESS,
+  LOAD_ARTICLES,
+  LOAD_ARTICLES_ERROR,
+  LOAD_ARTICLES_SUCCESS,
+  LOAD_USERS_ERROR,
+  LOAD_USERS_SUCCESS,
+  LOAD_USERS,
 } from './constants';
 
 // The initial state of the App
@@ -26,6 +32,8 @@ export const initialState = {
     repositories: false,
   },
   tags: [],
+  articles: [],
+  users: [],
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -61,6 +69,34 @@ const appReducer = (state = initialState, action) =>
         draft.loading = false;
         draft.error = action.error;
         break;
+      case LOAD_ARTICLES:
+        draft.loading = true;
+        draft.error = false;
+        break;
+      case LOAD_ARTICLES_SUCCESS:
+        draft.loading = false;
+        draft.error = false;
+        draft.articles = action.articles;
+        break;
+      case LOAD_ARTICLES_ERROR:
+        draft.loading = false;
+        draft.error = action.error;
+        break;
+      case LOAD_USERS:
+        draft.loading = true;
+        draft.error = false;
+        break;
+      case LOAD_USERS_SUCCESS:
+        draft.loading = false;
+        draft.error = false;
+        draft.users = action.users;
+        break;
+      case LOAD_USERS_ERROR:
+        draft.loading = false;
+        draft.error = action.error;
+        break;
+      default:
+        return state;
     }
   });
 

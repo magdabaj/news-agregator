@@ -15,18 +15,7 @@
  *    }
  */
 
-import {
-  CHANGE_USERNAME,
-  LOAD_USERS,
-  LOAD_USERS_ERROR,
-  LOAD_USERS_SUCCESS,
-  LOAD_ARTICLES,
-  LOAD_ARTICLES_SUCCESS,
-  LOAD_ARTICLES_ERROR,
-  LOAD_TAGS,
-  LOAD_TAGS_ERROR,
-  LOAD_TAGS_SUCCESS,
-} from './constants';
+import { CHANGE_USERNAME } from './constants';
 
 /**
  * Changes the input field of the form
@@ -41,31 +30,3 @@ export function changeUsername(username) {
     username,
   };
 }
-
-export const loadUsers = () => ({
-  type: LOAD_USERS,
-});
-
-export const loadUsersSuccess = users => ({
-  type: LOAD_USERS_SUCCESS,
-  users,
-});
-
-export const loadUsersError = error => ({
-  type: LOAD_USERS_ERROR,
-  error,
-});
-
-export const loadArticles = () => ({
-  type: LOAD_ARTICLES,
-});
-
-export const loadArticlesSuccess = articles => ({
-  type: LOAD_ARTICLES_SUCCESS,
-  articles,
-});
-
-export const loadArticlesError = error => ({
-  type: LOAD_ARTICLES_ERROR,
-  error,
-});

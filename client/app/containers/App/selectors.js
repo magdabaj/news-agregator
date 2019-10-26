@@ -45,6 +45,18 @@ const makeSelectTags = () =>
     globalState => globalState.tags,
   );
 
+const makeSelectUsers = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.users,
+  );
+
+const makeSelectArticles = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.articles,
+  );
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -53,4 +65,6 @@ export {
   makeSelectRepos,
   makeSelectLocation,
   makeSelectTags,
+  makeSelectArticles,
+  makeSelectUsers,
 };

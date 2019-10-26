@@ -8,24 +8,11 @@
  */
 
 import produce from 'immer';
-import {
-  CHANGE_USERNAME,
-  LOAD_ARTICLES_ERROR,
-  LOAD_ARTICLES_SUCCESS,
-  LOAD_ARTICLES,
-  LOAD_USERS,
-  LOAD_USERS_SUCCESS,
-  LOAD_USERS_ERROR,
-  LOAD_TAGS,
-  LOAD_TAGS_SUCCESS,
-  LOAD_TAGS_ERROR,
-} from './constants';
+import { CHANGE_USERNAME } from './constants';
 
 // The initial state of the App
 export const initialState = {
   username: '',
-  articles: [],
-  users: [],
   loading: false,
   error: false,
 };
@@ -37,32 +24,6 @@ const homeReducer = (state = initialState, action) =>
       case CHANGE_USERNAME:
         // Delete prefixed '@' from the github username
         draft.username = action.username.replace(/@/gi, '');
-        break;
-      case LOAD_ARTICLES:
-        draft.loading = true;
-        draft.error = false;
-        break;
-      case LOAD_ARTICLES_SUCCESS:
-        draft.loading = false;
-        draft.error = false;
-        draft.articles = action.articles;
-        break;
-      case LOAD_ARTICLES_ERROR:
-        draft.loading = false;
-        draft.error = action.error;
-        break;
-      case LOAD_USERS:
-        draft.loading = true;
-        draft.error = false;
-        break;
-      case LOAD_USERS_SUCCESS:
-        draft.loading = false;
-        draft.error = false;
-        draft.users = action.users;
-        break;
-      case LOAD_USERS_ERROR:
-        draft.loading = false;
-        draft.error = action.error;
         break;
       default:
         return state;

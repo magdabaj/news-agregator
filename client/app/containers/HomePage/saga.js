@@ -9,22 +9,24 @@ import {
   takeLatest,
   all,
 } from 'redux-saga/effects';
-import { LOAD_REPOS, LOAD_TAGS } from 'containers/App/constants';
+import {
+  LOAD_REPOS,
+  LOAD_TAGS,
+  LOAD_ARTICLES,
+  LOAD_USERS,
+} from 'containers/App/constants';
 import {
   reposLoaded,
   repoLoadingError,
   loadTagsError,
   loadTagsSuccess,
-} from 'containers/App/actions';
-import request from 'utils/request';
-import { makeSelectUsername } from 'containers/HomePage/selectors';
-import {
   loadUsersSuccess,
   loadUsersError,
   loadArticlesError,
   loadArticlesSuccess,
-} from './actions';
-import { LOAD_ARTICLES, LOAD_USERS } from './constants';
+} from 'containers/App/actions';
+import request from 'utils/request';
+import { makeSelectUsername } from 'containers/HomePage/selectors';
 import { fetchUser } from '../../utils/api/usersApi';
 import { fetchArticles } from '../../utils/api/articlesApi';
 import { fetchTags } from '../../utils/api/tagsApi';

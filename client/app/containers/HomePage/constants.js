@@ -10,11 +10,3 @@
  */
 
 export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
-
-export const LOAD_USERS = 'boilerplate/Home/LOAD_USERS';
-export const LOAD_USERS_SUCCESS = 'boilerplate/Home/LOAD_USERS_SUCCESS';
-export const LOAD_USERS_ERROR = 'boilerplate/Home/LOAD_USERS_ERROR';
-
-export const LOAD_ARTICLES = 'boilerplate/Home/LOAD_ARTICLES';
-export const LOAD_ARTICLES_SUCCESS = 'boilerplate/Home/LOAD_ARTICLES_SUCCESS';
-export const LOAD_ARTICLES_ERROR = 'boilerplate/Home/LOAD_ARTICLES_ERROR';

@@ -16,3 +16,11 @@ export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
 export const LOAD_TAGS = 'boilerplate/App/LOAD_TAGS';
 export const LOAD_TAGS_SUCCESS = 'boilerplate/App/LOAD_TAGS_SUCCESS';
 export const LOAD_TAGS_ERROR = 'boilerplate/App/LOAD_TAGS_ERROR';
+
+export const LOAD_USERS = 'boilerplate/App/LOAD_USERS';
+export const LOAD_USERS_SUCCESS = 'boilerplate/App/LOAD_USERS_SUCCESS';
+export const LOAD_USERS_ERROR = 'boilerplate/App/LOAD_USERS_ERROR';
+
+export const LOAD_ARTICLES = 'boilerplate/App/LOAD_ARTICLES';
+export const LOAD_ARTICLES_SUCCESS = 'boilerplate/App/LOAD_ARTICLES_SUCCESS';
+export const LOAD_ARTICLES_ERROR = 'boilerplate/App/LOAD_ARTICLES_ERROR';

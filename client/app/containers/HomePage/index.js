@@ -19,19 +19,16 @@ import {
   makeSelectLoading,
   makeSelectError,
   makeSelectTags,
-} from 'containers/App/selectors';
-import CenteredSection from './CenteredSection';
-import Section from './Section';
-import ArticlesComponent from '../../components/ArticlesComponent/Loadable';
-import Spinner from 'components/Spinner/Loadable';
-import SortArticlesByTag from 'containers/SortArticlesByTag/Loadable';
-import { loadRepos, loadTags } from '../App/actions';
-import { changeUsername, loadUsers, loadArticles } from './actions';
-import {
-  makeSelectUsername,
   makeSelectArticles,
   makeSelectUsers,
-} from './selectors';
+} from 'containers/App/selectors';
+import Spinner from 'components/Spinner/Loadable';
+import SortArticlesByTag from 'containers/SortArticlesByTag/Loadable';
+import CenteredSection from './CenteredSection';
+import Section from './Section';
+import { loadRepos, loadTags, loadUsers, loadArticles } from '../App/actions';
+import { changeUsername } from './actions';
+import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -69,7 +66,6 @@ export function HomePage({
   //   error,
   //   repos,
   // };
-
   return (
     <article>
       <Helmet>
@@ -84,7 +80,6 @@ export function HomePage({
           {articles.length > 0 && users.length > 0 && tags.length > 0 ? (
             <div>
               <SortArticlesByTag tags={tags} />
-              {/*<ArticlesComponent articles={articles} />*/}
             </div>
           ) : (
             <Spinner />
@@ -133,7 +128,7 @@ export function mapDispatchToProps(dispatch) {
     loadUsers: () => dispatch(loadUsers()),
     loadArticles: () => dispatch(loadArticles()),
     loadTags: () => dispatch(loadTags()),
-};
+  };
 }
 
 const withConnect = connect(
