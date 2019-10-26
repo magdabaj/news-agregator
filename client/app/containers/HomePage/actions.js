@@ -69,17 +69,3 @@ export const loadArticlesError = error => ({
   type: LOAD_ARTICLES_ERROR,
   error,
 });
-
-export const loadTags = () => ({
-  type: LOAD_TAGS,
-});
-
-export const loadTagsSuccess = tags => ({
-  type: LOAD_TAGS_SUCCESS,
-  tags,
-});
-
-export const loadTagsError = error => ({
-  type: LOAD_TAGS_ERROR,
-  error,
-});

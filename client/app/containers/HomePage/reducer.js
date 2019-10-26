@@ -26,7 +26,6 @@ export const initialState = {
   username: '',
   articles: [],
   users: [],
-  tags: [],
   loading: false,
   error: false,
 };
@@ -62,19 +61,6 @@ const homeReducer = (state = initialState, action) =>
         draft.users = action.users;
         break;
       case LOAD_USERS_ERROR:
-        draft.loading = false;
-        draft.error = action.error;
-        break;
-      case LOAD_TAGS:
-        draft.loading = true;
-        draft.error = false;
-        break;
-      case LOAD_TAGS_SUCCESS:
-        draft.loading = false;
-        draft.error = false;
-        draft.tags = action.tags;
-        break;
-      case LOAD_TAGS_ERROR:
         draft.loading = false;
         draft.error = action.error;
         break;

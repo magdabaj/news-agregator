@@ -9,8 +9,13 @@ import {
   takeLatest,
   all,
 } from 'redux-saga/effects';
-import { LOAD_REPOS } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError } from 'containers/App/actions';
+import { LOAD_REPOS, LOAD_TAGS } from 'containers/App/constants';
+import {
+  reposLoaded,
+  repoLoadingError,
+  loadTagsError,
+  loadTagsSuccess,
+} from 'containers/App/actions';
 import request from 'utils/request';
 import { makeSelectUsername } from 'containers/HomePage/selectors';
 import {
@@ -18,10 +23,8 @@ import {
   loadUsersError,
   loadArticlesError,
   loadArticlesSuccess,
-  loadTagsError,
-  loadTagsSuccess,
 } from './actions';
-import { LOAD_USERS, LOAD_ARTICLES, LOAD_TAGS } from './constants';
+import { LOAD_ARTICLES, LOAD_USERS } from './constants';
 import { fetchUser } from '../../utils/api/usersApi';
 import { fetchArticles } from '../../utils/api/articlesApi';
 import { fetchTags } from '../../utils/api/tagsApi';
@@ -93,7 +96,7 @@ export function* handleTagsLoad() {
     const tags = yield call(fetchTags);
     yield put(loadTagsSuccess(tags));
   } catch (error) {
-    yield put(loadArticlesError(error.message));
+    yield put(loadTagsError(error.message));
   }
 }
 

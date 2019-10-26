@@ -11,8 +11,10 @@ const client = new Client({
 });
 client.connect();
 
+// SELECT article_id FROM articles INNER JOIN tags_and_articles ON articles.article_id = tags_and_articles.article_id INNER JOIN tags ON tags.tag_id = tags_and_articles.tag_id
+
 router.get('/', (req, res, next) => {
-    client.query('SELECT * FROM tags', (err, res2) => {
+    client.query('SELECT tags.tag_id, tags.name, ARRAY_AGG(JSONB_BUILD_OBJECT(\'id\', tags_and_articles.article_id, \'title\', articles.title, \'url\', articles.url)) AS articles FROM tags LEFT JOIN tags_and_articles ON tags.tag_id = tags_and_articles.tag_id LEFT JOIN articles on articles.article_id = tags_and_articles.article_id GROUP BY tags.tag_id, tags.name', (err, res2) => {
         if (err) {
             console.log(err.stack)
         } else {

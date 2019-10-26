@@ -18,19 +18,19 @@ import {
   makeSelectRepos,
   makeSelectLoading,
   makeSelectError,
+  makeSelectTags,
 } from 'containers/App/selectors';
 import CenteredSection from './CenteredSection';
 import Section from './Section';
 import ArticlesComponent from '../../components/ArticlesComponent/Loadable';
 import Spinner from 'components/Spinner/Loadable';
-import SortByTag from 'components/SortByTag/Loadable';
-import { loadRepos } from '../App/actions';
-import { changeUsername, loadUsers, loadArticles, loadTags } from './actions';
+import SortArticlesByTag from 'containers/SortArticlesByTag/Loadable';
+import { loadRepos, loadTags } from '../App/actions';
+import { changeUsername, loadUsers, loadArticles } from './actions';
 import {
   makeSelectUsername,
   makeSelectArticles,
   makeSelectUsers,
-  makeSelectTags,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -58,10 +58,11 @@ export function HomePage({
     if (users.length === 0) props.loadUsers();
     if (articles.length === 0) props.loadArticles();
     if (tags.length === 0) props.loadTags();
-
   }, []);
 
-  console.log(users, tags, articles);
+  console.log('users', users);
+  console.log('tags', tags);
+  console.log('articles', articles);
 
   // const reposListProps = {
   //   loading,
@@ -79,16 +80,15 @@ export function HomePage({
         />
       </Helmet>
       <div>
-        <CenteredSection >
-          {articles.length > 0 && users.length > 0 && tags.length > 0 ?
-            (
-              <div>
-                <SortByTag tags={tags} />
-                <ArticlesComponent articles={articles} />
-              </div>
-              ) :
+        <CenteredSection>
+          {articles.length > 0 && users.length > 0 && tags.length > 0 ? (
+            <div>
+              <SortArticlesByTag tags={tags} />
+              {/*<ArticlesComponent articles={articles} />*/}
+            </div>
+          ) : (
             <Spinner />
-          }
+          )}
         </CenteredSection>
         <Section>
 
@@ -133,7 +133,7 @@ export function mapDispatchToProps(dispatch) {
     loadUsers: () => dispatch(loadUsers()),
     loadArticles: () => dispatch(loadArticles()),
     loadTags: () => dispatch(loadTags()),
-  };
+};
 }
 
 const withConnect = connect(
