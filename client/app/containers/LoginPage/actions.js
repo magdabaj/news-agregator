@@ -4,7 +4,7 @@
  *
  */
 
-import { DEFAULT_ACTION } from 'client/app/containers/LoginPage/constants';
+import { DEFAULT_ACTION } from './constants';
 
 export function defaultAction() {
   return {

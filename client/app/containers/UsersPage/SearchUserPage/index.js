@@ -27,8 +27,8 @@ class SearchUser extends React.Component {
     this.setState({ tag: { [name]: value } });
     this.setState({
       filteredSuggestions: users.filter(user =>
-        user.name.toLowerCase().includes(this.state.tag.text.toLowerCase())
-      )
+        user.name.toLowerCase().includes(this.state.tag.text.toLowerCase()),
+      ),
     });
 
     this.setState({

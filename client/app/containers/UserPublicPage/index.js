@@ -4,12 +4,10 @@
  *
  */
 
-import Spinner from 'components/Spinner/Loadable';
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import {Link} from "react-router-dom";
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -76,7 +74,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     loadUsers: () => dispatch(loadUsers()),
-    loadUserArticles: user_id => dispatch(loadUserArticles(user_id)),
+    loadUserArticles: userId => dispatch(loadUserArticles(userId)),
     findUser: (users, slug) => dispatch(findUser(users, slug)),
   };
 }

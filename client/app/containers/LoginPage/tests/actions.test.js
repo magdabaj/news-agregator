@@ -1,5 +1,5 @@
-import { defaultAction } from 'client/app/containers/LoginPage/actions';
-import { DEFAULT_ACTION } from 'client/app/containers/LoginPage/constants';
+import { defaultAction } from '../actions';
+import { DEFAULT_ACTION } from '../constants';
 
 describe('LoginPage actions', () => {
   describe('Default Action', () => {

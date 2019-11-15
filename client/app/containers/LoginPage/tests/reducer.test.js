@@ -1,5 +1,5 @@
 // import produce from 'immer';
-import loginPageReducer from 'client/app/containers/LoginPage/reducer';
+import loginPageReducer from '../reducer';
 // import { someAction } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */

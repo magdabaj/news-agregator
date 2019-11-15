@@ -26,9 +26,9 @@ export function* watchUsersLoad() {
 
 export function* handleUserArticlesLoad(action) {
   // const user_id = action.user_id;
-  const { user_id } = action.user;
+  const { id } = action.user;
   try {
-    const articles = yield call(fetchUserArticles, user_id);
+    const articles = yield call(fetchUserArticles, id);
     yield put(loadUserArticlesSuccess(articles));
   } catch (e) {
     yield put(loadUserArticlesError(e.message));

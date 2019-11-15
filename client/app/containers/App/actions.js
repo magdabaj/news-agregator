@@ -27,7 +27,7 @@ import {
   LOAD_REPOS_ERROR,
   LOAD_TAGS,
   LOAD_TAGS_ERROR,
-  LOAD_TAGS_SUCCESS
+  LOAD_TAGS_SUCCESS,
 } from './constants';
 
 /**

@@ -16,6 +16,7 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import UsersPage from 'containers/UsersPage/Loadable';
 import UserPublicPage from 'containers/UserPublicPage/Loadable';
+import LoginPage from 'containers/LoginPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
@@ -45,6 +46,7 @@ export default function App() {
         <Route path="/features" component={FeaturePage} />
         <Route path="/users/:slug" component={UserPublicPage} />
         <Route path="/users" component={UsersPage} />
+        <Route path="/login" component={LoginPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />

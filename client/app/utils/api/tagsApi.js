@@ -1,6 +1,7 @@
 import { handleError, handleResponse } from './apiUtils';
 
-const api = 'http://localhost:9000/tags';
+// const api = 'http://localhost:9000/tags';
+const api = 'http://localhost:51044/api/tags';
 
 export const fetchTags = async () => {
   const response = await fetch(api);

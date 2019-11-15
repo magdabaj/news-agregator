@@ -1,5 +1,5 @@
-import { createSelector } from 'reselect/lib/index';
-import { initialState } from 'client/app/containers/LoginPage/reducer';
+import { createSelector } from 'reselect';
+import { initialState } from './reducer';
 
 /**
  * Direct selector to the loginPage state domain

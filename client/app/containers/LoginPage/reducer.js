@@ -3,8 +3,8 @@
  * LoginPage reducer
  *
  */
-import produce from 'immer/dist/immer';
-import { DEFAULT_ACTION } from 'client/app/containers/LoginPage/constants';
+import produce from 'immer';
+import { DEFAULT_ACTION } from './constants';
 
 export const initialState = {};
 
