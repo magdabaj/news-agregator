@@ -13,6 +13,16 @@ export const fetchUser = async () => {
   return data;
 };
 
+export function loginUserApi(user) {
+  return fetch(`${api}/authenticate`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', accept: 'application/json' },
+    body: JSON.stringify(user),
+  })
+    .then(handleResponse)
+    .catch(handleError);
+}
+
 export function saveUserApi(user) {
   return fetch(`${api}/${user.id}`, {
     method: user.id ? 'PUT' : 'POST',
@@ -24,7 +34,7 @@ export function saveUserApi(user) {
 }
 
 export function deleteUserApi(userId) {
-  return fetch(`http://localhost:9000/users/${userId}`, {method: 'DELETE'})
+  return fetch(`http://localhost:9000/users/${userId}`, { method: 'DELETE' })
     .then(handleResponse)
     .catch(handleError);
 }

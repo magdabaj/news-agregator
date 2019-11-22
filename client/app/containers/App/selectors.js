@@ -57,6 +57,12 @@ const makeSelectArticles = () =>
     globalState => globalState.articles,
   );
 
+const makeSelectNewUser = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.newUser,
+  );
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -67,4 +73,5 @@ export {
   makeSelectTags,
   makeSelectArticles,
   makeSelectUsers,
+  makeSelectNewUser,
 };

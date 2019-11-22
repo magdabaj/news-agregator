@@ -24,3 +24,8 @@ export const LOAD_USERS_ERROR = 'boilerplate/App/LOAD_USERS_ERROR';
 export const LOAD_ARTICLES = 'boilerplate/App/LOAD_ARTICLES';
 export const LOAD_ARTICLES_SUCCESS = 'boilerplate/App/LOAD_ARTICLES_SUCCESS';
 export const LOAD_ARTICLES_ERROR = 'boilerplate/App/LOAD_ARTICLES_ERROR';
+
+export const GET_NEW_USER = 'boilerplate/App/GET_NEW_USER';
+export const SET_NEW_USER = 'boilerplate/App/SET_NEW_USER';
+export const SET_NEW_USER_SUCCESS = 'boilerplate/App/SET_NEW_USER_SUCCESS';
+export const GET_NEW_USER_ERROR = 'boilerplate/App/GET_NEW_USER_ERROR';

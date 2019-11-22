@@ -34,6 +34,10 @@ export const initialState = {
   tags: [],
   articles: [],
   users: [],
+  newUser: {
+    email: '',
+    password: '',
+  },
 };
 
 /* eslint-disable default-case, no-param-reassign */

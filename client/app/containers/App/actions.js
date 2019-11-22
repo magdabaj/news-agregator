@@ -15,6 +15,7 @@
  *    }
  */
 
+import { SET_NEW_USER } from './constants';
 import {
   LOAD_ARTICLES,
   LOAD_ARTICLES_ERROR,
@@ -28,6 +29,7 @@ import {
   LOAD_TAGS,
   LOAD_TAGS_ERROR,
   LOAD_TAGS_SUCCESS,
+  GET_NEW_USER,
 } from './constants';
 
 /**
@@ -111,4 +113,13 @@ export const loadArticlesSuccess = articles => ({
 export const loadArticlesError = error => ({
   type: LOAD_ARTICLES_ERROR,
   error,
+});
+
+export const getNewUser = () => ({
+  type: GET_NEW_USER,
+});
+
+export const setNewUser = newUser => ({
+  type: SET_NEW_USER,
+  newUser,
 });
